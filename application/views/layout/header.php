@@ -1,0 +1,25 @@
+<header class="p-3 sticky-top" style="background-color: #43a047;">
+    <div class="container">
+        <div
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a
+                href="<?= base_url('home') ?>"
+                class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img src="<?= base_url('assets/img/home/logo_puskesmas.png') ?>" style="width: 40px;" alt="" srcset="">
+                <h5 class="mb-1" style="margin-right: 25px; margin-left: 8px;">Puskeskmas Kebumen 1</h5>
+            </a>
+            <ul
+                class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="<?= base_url('home') ?>" class="nav-link px-2 text-white">Home</a></li>
+                <li><a href="<?= base_url('home') ?>/#tentang" class="nav-link px-2 text-white">About</a></li>
+                <li><a href="<?= base_url('home') ?>/#fitur" class="nav-link px-2 text-white">Feature</a></li>
+            </ul>
+            <div class="text-end">
+                <button type="button" class="btn btn-outline-light me-2">
+                    Login
+                </button>
+                <button type="button" class="btn btn-warning">Sign-up</button>
+            </div>
+        </div>
+    </div>
+</header>
