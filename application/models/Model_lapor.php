@@ -12,6 +12,10 @@ class Model_lapor extends CI_Model {
         return $query->result_array();
     }
 
+    function addLaporan($data) {
+        $this->db->insert('dokumentasi_kegiatan', $data);
+    }
+
 }
 
 /* End of file: Model_lapor.php */

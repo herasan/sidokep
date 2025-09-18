@@ -59,28 +59,27 @@ class Lapor extends CI_Controller
                             $configer['maintain_ratio'] = TRUE;
                             $configer['width']         = 600; //pixel
                             $configer['master_dim'] = 'width'; // This ensures the width is maintained, and height is auto
-                            
+
                             // agar file yang diconvert tidak ada _thumbs dibelakangnya
                             $configer['thumb_marker'] = '';
-                            
+
                             $this->load->library('image_lib', $configer);
                             $this->image_lib->initialize($configer);
                             $this->image_lib->resize();
 
                             $this->image_lib->clear();
-                            
+
                             $filename = $uploadData['file_name'];
                             $upload['totalFiles'][] = $filename;
+
+                            unlink(FCPATH . 'assets/img/foto_kegiatan/foto/' . $uploadData['file_name']);
                         } else {
-                            var_dump($this->upload->display_errors());
-                            die;
                             flashData('File yang diupload ada yang belum sesuai!', 'Gagal Upload File', 'error');
                             redirect('lapor', 'refresh');
                         }
                     }
                 }
             }
-
 
             $pelapor_kegiatan = $this->input->post('pelapor_kegiatan', true);
             $nama_kegiatan = $this->input->post('nama_kegiatan', true);
@@ -98,13 +97,27 @@ class Lapor extends CI_Controller
                 'tempat_kegiatan' => $tempat_kegiatan,
                 'tanggal_kegiatan' => $tanggal_kegiatan,
                 'hasil_kegiatan' => $hasil_kegiatan,
+                'foto1' => $upload['totalFiles'][0],
+                'foto2' => $upload['totalFiles'][1],
+                'foto3' => $upload['totalFiles'][2],
+                'foto4' => $upload['totalFiles'][3],
             ];
 
+            $this->Model_lapor->addLaporan($data);
 
+            var_dump($data); die;
 
-            flashData('Berhasil menambahkan menu baru!', 'Add Menu', 'success');
+            flashData('Berhasil menambahkan laporan!', 'Tambah Laporan', 'success');
             redirect('lapor', 'refresh');
         }
+    }
+
+    function detail_laporan($id) {
+        
+    }
+
+    function hapus_laporan($id) {
+        
     }
 }
 /* End of file: Lapor.php */
