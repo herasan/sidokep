@@ -15,10 +15,10 @@
                 <li><a href="<?= base_url('home') ?>/#fitur" class="nav-link px-2 text-white">Feature</a></li>
             </ul>
             <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">
+                <a href="<?= base_url('auth/login') ?>" class="btn btn-outline-light me-2">
                     Login
-                </button>
-                <button type="button" class="btn btn-warning">Sign-up</button>
+                </a>
+                <a href="<?= base_url('auth/register') ?>" class="btn btn-warning">Sign-up</a>
             </div>
         </div>
     </div>

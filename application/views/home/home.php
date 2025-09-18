@@ -1,4 +1,4 @@
-<body>
+<body style="background-color: #e8f5e9;">
     <!-- Hero Section (perbaikan: wave menempel di bawah) -->
     <style>
         /* tambahkan ini di <head> atau file CSS utama */
@@ -70,7 +70,7 @@
     </section>
 
     <!-- Tentang -->
-    <section id="tentang" class="py-5" style="background: linear-gradient(135deg, #e8f5e9, #ffffff);">
+    <section id="tentang" class="py-5">
         <div class="container">
             <div class="row align-items-stretch g-4">
                 <!-- Gambar -->
