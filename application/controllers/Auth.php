@@ -21,7 +21,11 @@ class Auth extends CI_Controller {
     {
         $data['content'] = 'home/register';
         $this->load->view('layout/wrapper', $data);
-        
+    }
+
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect('home', 'refresh');
     }
 
 }
