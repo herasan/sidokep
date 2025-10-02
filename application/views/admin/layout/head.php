@@ -21,6 +21,10 @@
     <link href="<?= base_url('assets/admin/') ?>css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/admin/') ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <!-- Jquery -->
+     
+    <script src="<?= base_url('assets/admin/') ?>vendor/jquery/jquery.min.js"></script>
+
 </head>
 
 <body id="page-top">
