@@ -23,7 +23,7 @@
 
     <!-- Page level custom scripts -->
     <script src="<?= base_url('assets/admin/') ?>js/demo/datatables-demo.js"></script>
-
+<script src="<?= base_url('assets/js/myScript.js') ?>"></script>
     </body>
 
     </html>

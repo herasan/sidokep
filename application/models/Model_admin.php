@@ -22,30 +22,24 @@ class Model_admin extends CI_Model {
         return $query->result_array();
     }
 
-    function addDataPegawai() {
-        $data = array(
-            'nama' => $this->input->post('nama'),
-            'nip' => $this->input->post('nip'),
-            'jabatan' => $this->input->post('jabatan'),
-        );
+    function getDataPegawai($id) {
+        $this->db->where('id_user', $id);
+        $query = $this->db->get('users');
+        return $query->row_array();
+    }
+
+    function addDataPegawai($data) {
         return $this->db->insert('users', $data);
     }
 
-    function updatePegawai() {
-        $id = $this->uri->segment(4);
-        $data = array(
-            'nama' => $this->input->post('nama'),
-            'nip' => $this->input->post('nip'),
-            'jabatan' => $this->input->post('jabatan'),
-        );
-        $this->db->where('id', $id);
+    function updateDataPegawai($data, $id) {
+        $this->db->where('id_user', $id);
         return $this->db->update('users', $data);
         
     }
 
-    function deletePegawai() {
-        $id = $this->uri->segment(4);
-        return $this->db->delete('users', array('id' => $id));
+    function deleteDataPegawai($id) {
+        return $this->db->delete('users', array('id_user' => $id));
     }
 }
 

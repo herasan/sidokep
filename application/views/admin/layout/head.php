@@ -24,9 +24,13 @@
     <!-- Jquery -->
      
     <script src="<?= base_url('assets/admin/') ?>vendor/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/sweetalert/') ?>sweetalert2.css">
+    
+    <script src="<?= base_url('assets/sweetalert/') ?>sweetalert2.min.js" aria-hidden="true"></script>
 
 </head>
-
+<div class="flashData" id="<?= $this->session->userdata('icon') ?>" data-message="<?= $this->session->flashdata('message'); ?>" data-tittle="<?= $this->session->flashdata('tittle'); ?>" data-icon="<?= $this->session->flashdata('icon'); ?>"></div>
 <body id="page-top">
+    
     <!-- Page Wrapper -->
     <div id="wrapper">

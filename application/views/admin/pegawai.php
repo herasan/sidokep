@@ -15,22 +15,28 @@
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>No</th>
                                     <th>Nama</th>
-                                    <th>NIP</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Status</th>
+                                    <th>Jabatan</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $i = 1; ?>
+                                <?php foreach ($pegawai as $pegawai) : ?>
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
+                                    <td><?= $i++ ?></td>
+                                    <td><?= $pegawai['nama'] ?></td>
+                                    <td><?= $pegawai['status'] ?></td>
+                                    <td><?= $pegawai['jabatan'] ?></td>
+                                    <td class="text-center">
+                                        <a href="<?= base_url('admin/pegawai/edit/' . $pegawai['id_user']) ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                        <a href="<?= base_url('admin/pegawai/delete/' . $pegawai['id_user']) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fas fa-trash"></i> Hapus</a>
+                                    </td>
                                 </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

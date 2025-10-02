@@ -14,7 +14,7 @@
                         <div class="form-group">
                             <label for="nama">Nama Pegawai</label>
                             <input type="text" class="form-control" id="nama" name="nama"
-                                placeholder="Masukkan nama pegawai" value="<?= set_value('nama'); ?>" required>
+                                placeholder="Masukkan nama pegawai" value="<?= $pegawai['nama'] ?>" required>
                             <?= form_error('nama', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>
 
@@ -22,44 +22,44 @@
                             <label for="status">Status Pegawai</label>
                             <select class="form-control" id="status" name="status" required>
                                 <option value="">-- Pilih Status --</option>
-                                <option value="ASN" <?= set_value('status') == 'ASN' ? 'selected' : ''; ?>>ASN</option>
-                                <option value="Non-ASN" <?= set_value('status') == 'Non-ASN' ? 'selected' : ''; ?>>Non-ASN</option>
+                                <option value="ASN" <?= ($pegawai['status']) == 'ASN' ? 'selected' : ''; ?>>ASN</option>
+                                <option value="Non-ASN" <?= ($pegawai['status']) == 'Non-ASN' ? 'selected' : ''; ?>>Non-ASN</option>
                             </select>
                             <?= form_error('status', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>
 
-                        <div class="form-group d-none" id="nip">
+                        <div class="form-group <?= ($pegawai['status'] == "Non-ASN") ? "d-none" : " "; ?>" id="nip">
                             <label for="nip">NIP</label>
                             <input type="text" class="form-control" name="nip"
-                                placeholder="Masukkan NIP pegawai" value="<?= set_value('nip'); ?>">
+                                placeholder="Masukkan NIP pegawai" value="<?= ($pegawai['nip']); ?>">
                             <?= form_error('nip', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>
 
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" name="username"
-                                placeholder="Masukkan username pegawai" value="<?= set_value('username'); ?>" required>
+                                placeholder="Masukkan username pegawai" value="<?= ($pegawai['username']); ?>" required>
                             <?= form_error('username', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="text" class="form-control" id="password" name="password"
-                                placeholder="Masukkan password pegawai" value="<?= set_value('password'); ?>" required>
+                                placeholder="Masukkan penggantian password pegawai" value="" required>
                             <?= form_error('password', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>
 
                         <div class="form-group">
-                            <label for="confirm_password">Password</label>
+                            <label for="confirm_password">Ulangi Password</label>
                             <input type="text" class="form-control" id="confirm_password" name="confirm_password"
-                                placeholder="Masukkan ulang password pegawai" value="<?= set_value('confirm_password'); ?>" required>
+                                placeholder="Masukkan ulang password pegawai" value="" required>
                             <?= form_error('confirm_password', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>
 
                         <div class="form-group">
                             <label for="jabatan">Jabatan</label>
                             <input type="text" class="form-control" id="jabatan" name="jabatan"
-                                placeholder="Masukkan jabatan" value="<?= set_value('jabatan'); ?>" required>
+                                placeholder="Masukkan jabatan" value="<?= ($pegawai['jabatan']); ?>" required>
                             <?= form_error('jabatan', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>
 
@@ -67,9 +67,9 @@
                             <label for="role">Role</label>
                             <select class="form-control" id="role" name="role" required>
                                 <option value="">-- Pilih Role --</option>
-                                <option value="Pegawai" <?= set_value('role') == 'Pegawai' ? 'selected' : ''; ?>>Pegawai</option>
-                                <option value="Pimpinan" <?= set_value('role') == 'Pimpinan' ? 'selected' : ''; ?>>Pimpinan</option>
-                                <option value="Admin" <?= set_value('role') == 'Admin' ? 'selected' : ''; ?>>Admin</option>
+                                <option value="Pegawai" <?= ($pegawai['role']) == 'Pegawai' ? 'selected' : ''; ?>>Pegawai</option>
+                                <option value="Pimpinan" <?= ($pegawai['role']) == 'Pimpinan' ? 'selected' : ''; ?>>Pimpinan</option>
+                                <option value="Admin" <?= ($pegawai['role']) == 'Admin' ? 'selected' : ''; ?>>Admin</option>
                             </select>
                             <?= form_error('role', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>
