@@ -20,16 +20,11 @@
                 <div class="card p-4">
                     <div class="card-body">
                         <h2 class="fw-bold text-success mb-4 text-center">Login</h2>
-                        <form action="<?= base_url('auth/login') ?>" method="POST">
+                        <form action="" method="post">
                             <!-- Username -->
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="text" 
-                                    class="form-control <?= form_error('username') ? 'is-invalid' : '' ?>" 
-                                    id="username" 
-                                    name="username" 
-                                    placeholder="Masukkan username" 
-                                    value="<?= set_value('username'); ?>">
+                                <input type="text" class="form-control <?= form_error('username') ? 'is-invalid' : '' ?>" id="username" name="username" placeholder="Masukkan username" value="<?= set_value('username'); ?>">
                                 <div class="invalid-feedback">
                                     <?= form_error('username'); ?>
                                 </div>
@@ -37,11 +32,7 @@
                             <!-- Password -->
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" 
-                                    class="form-control <?= form_error('password') ? 'is-invalid' : '' ?>" 
-                                    id="password" 
-                                    name="password" 
-                                    placeholder="Masukkan password">
+                                <input type="password" class="form-control <?= form_error('password') ? 'is-invalid' : '' ?>" id="password" name="password" placeholder="Masukkan password">
                                 <div class="invalid-feedback">
                                     <?= form_error('password'); ?>
                                 </div>
@@ -50,10 +41,6 @@
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-success btn-lg shadow">Masuk</button>
                             </div>
-                            <!-- Link tambahan -->
-                            <p class="text-center mt-3">
-                                Belum punya akun? <a href="<?= base_url('auth/register') ?>" class="text-success fw-bold">Daftar</a>
-                            </p>
                         </form>
                     </div>
                 </div>
