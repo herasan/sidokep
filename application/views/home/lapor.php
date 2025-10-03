@@ -71,23 +71,22 @@
                             <!-- Nama Kegiatan -->
                             <div class="mb-3">
                                 <label for="pelaporKegiatan" class="form-label">Pelapor Kegiatan</label>
-                                <input type="text" class="form-control <?= form_error('pelapor_kegiatan') ? 'is-invalid' : '' ?>" id="pelaporKegiatan" name="pelapor_kegiatan" placeholder="Nama Pelapor" 
-                                value="<?= set_value('pelapor_kegiatan'); ?>"
-                                style="background-color: #e9ecef; color: #6c757d;"
-                                >
+                                <input type="text" class="form-control <?= form_error('pelapor_kegiatan') ? 'is-invalid' : '' ?>" id="pelaporKegiatan" name="pelapor_kegiatan" placeholder="Nama Pelapor"
+                                    value="<?= $login['nama']; ?>"
+                                    style="background-color: #e9ecef; color: #6c757d;">
                                 <div class="invalid-feedback">
                                     <?= form_error('pelapor_kegiatan'); ?>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="namaKegiatan" class="form-label">Nama Kegiatan</label>
-                                <input type="text" 
-                                class="form-control <?= form_error('nama_kegiatan') ? 'is-invalid' : '' ?>" 
-                                value="<?= set_value('nama_kegiatan'); ?>" 
-                                name="nama_kegiatan" 
-                                id="namaKegiatan" 
-                                placeholder="Contoh: Penyuluhan Kesehatan" 
-                                required>
+                                <input type="text"
+                                    class="form-control <?= form_error('nama_kegiatan') ? 'is-invalid' : '' ?>"
+                                    value="<?= set_value('nama_kegiatan'); ?>"
+                                    name="nama_kegiatan"
+                                    id="namaKegiatan"
+                                    placeholder="Contoh: Penyuluhan Kesehatan"
+                                    required>
                                 <div class="invalid-feedback">
                                     <?= form_error('nama_kegiatan'); ?>
                                 </div>
@@ -95,7 +94,7 @@
                             <div class="mb-3">
                                 <label for="tujuan_kegiatan" class="form-label">Tujuan Kegiatan</label>
                                 <div class="input-group mb-3">
-                                    <select class="form-select" id="tujuan_kegiatan" name="tujuan_kegiatan" required>
+                                    <select class="form-select js-example-basic-single" id="tujuan_kegiatan" name="tujuan_kegiatan" required>
                                         <?php foreach ($tujuan_kegiatan as $tujuan) : ?>
                                             <option value="<?= $tujuan['tujuan_kegiatan'] ?>"><?= $tujuan['tujuan_kegiatan'] ?></option>
                                         <?php endforeach; ?>
@@ -105,11 +104,11 @@
                                 <!-- Input tambahan akan tampil kalau pilih Lainnya -->
                                 <div id="lainnyaTujuan" style="display:none; margin-top:10px;">
                                     <label for="lainnya_tujuan">Tuliskan tujuan lainnya:</label>
-                                    <input type="text" class="form-control <?= form_error('lainnya_tujuan') ? 'is-invalid' : '' ?>" 
-                                    id="lainnya_tujuan" 
-                                    value="<?= set_value('lainnya_tujuan'); ?>"
-                                    name="lainnya_tujuan" 
-                                    placeholder="Masukkan tujuan kegiatan...">
+                                    <input type="text" class="form-control <?= form_error('lainnya_tujuan') ? 'is-invalid' : '' ?>"
+                                        id="lainnya_tujuan"
+                                        value="<?= set_value('lainnya_tujuan'); ?>"
+                                        name="lainnya_tujuan"
+                                        placeholder="Masukkan tujuan kegiatan...">
                                     <div class="invalid-feedback">
                                         <?= form_error('lainnya_tujuan'); ?>
                                     </div>
@@ -118,8 +117,8 @@
                             <div class="mb-3">
                                 <label for="tempatKegiatan" class="form-label">Tempat Kegiatan</label>
                                 <input type="text" class="form-control <?= form_error('tempat_kegiatan') ? 'is-invalid' : '' ?>" id="tempatKegiatan" name="tempat_kegiatan"
-                                value="<?= set_value('tempat_kegiatan'); ?>"
-                                placeholder="Contoh: Desa Bandung" required>
+                                    value="<?= set_value('tempat_kegiatan'); ?>"
+                                    placeholder="Contoh: Desa Bandung" required>
                                 <div class="invalid-feedback">
                                     <?= form_error('tempat_kegiatan'); ?>
                                 </div>
@@ -127,10 +126,10 @@
                             <!-- Tanggal Kegiatan -->
                             <div class="mb-3">
                                 <label for="tanggalKegiatan" class="form-label">Tanggal Kegiatan</label>
-                                <input type="date" class="form-control <?= form_error('tanggal_kegiatan') ? 'is-invalid' : '' ?>" 
-                                value="<?= set_value('tanggal_kegiatan'); ?>"
-                                id="tanggalKegiatan" 
-                                name="tanggal_kegiatan" required>
+                                <input type="date" class="form-control <?= form_error('tanggal_kegiatan') ? 'is-invalid' : '' ?>"
+                                    value="<?= set_value('tanggal_kegiatan'); ?>"
+                                    id="tanggalKegiatan"
+                                    name="tanggal_kegiatan" required>
                                 <div class="invalid-feedback">
                                     <?= form_error('tanggal_kegiatan'); ?>
                                 </div>
@@ -242,4 +241,21 @@
             }
         });
     </script>
+
+<script>
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#tujuan_kegiatan').select2({
+                theme: "bootstrap-5",
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+                placeholder: $(this).data('placeholder'),
+            });
+            $('.js-example-basic-single').select2({
+                placeholder: "Pilih Tujuan Kegiatan",
+                allowClear: true
+            });
+        });
+    </script>
+
 </body>

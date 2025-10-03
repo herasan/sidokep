@@ -27,6 +27,7 @@ class Lapor extends CI_Controller
                 flashData('Pelaporan gagal ditambahkan!', 'Tambah Pelaporan Gagal', 'error');
             }
 
+            $data['login'] = $this->db->get_where('users', ['username' => $this->session->userdata('username')])->row_array();
             $data['content'] = 'home/lapor';
             $data['tujuan_kegiatan'] = $this->Model_lapor->getAllTujuanKegiatan();
             $this->load->view('layout/wrapper', $data);
@@ -104,8 +105,6 @@ class Lapor extends CI_Controller
             ];
 
             $this->Model_lapor->addLaporan($data);
-
-            var_dump($data); die;
 
             flashData('Berhasil menambahkan laporan!', 'Tambah Laporan', 'success');
             redirect('lapor', 'refresh');

@@ -20,7 +20,6 @@
     <p class="text-center text-body-secondary">&copy; 2025 Company, Inc</p>
   </footer>
 </div>
-<script src="<?= base_url('assets/js/') ?>jquery-3.6.0.min.js"></script>
 <script
   src="<?= base_url('assets/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"
   class="astro-vvvwv3sm">
