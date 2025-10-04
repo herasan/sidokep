@@ -37,7 +37,7 @@ class Admin extends CI_Controller
                 $this->form_validation->set_rules('confirm_password', 'Ulangi Password', 'matches[password]');
                 $this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
                 $this->form_validation->set_rules('role', 'Role', 'required');
-                
+
                 if ($this->form_validation->run() == FALSE) {
                     if ($this->form_validation->error_array()) {
                         flashData('Pegawai gagal diubah!', 'Edit Pegawai Gagal', 'error');
@@ -113,12 +113,41 @@ class Admin extends CI_Controller
         }
     }
 
-    function kegiatan()
+    function kegiatan($act = null, $id = null)
     {
-        $data['content'] = 'admin/kegiatan';
-        $this->load->model('Model_admin');
-        $data['kegiatan'] = $this->Model_admin->getAllDataKegiatan();
-        $this->load->view('admin/layout/wrapper', $data);
+        if ($act == "add" && $id == null) {
+            $this->load->model('Model_admin');
+            if ($this->input->post()) {
+                $this->form_validation->set_rules('tujuan_kegiatan', 'Tujuan Kegiatan', 'required|is_unique[tujuan_kegiatan.tujuan_kegiatan]');
+                if ($this->form_validation->run() == FALSE) {
+                    if ($this->form_validation->error_array()) {
+                        flashData('Tujuan Kegiatan gagal ditambahkan!', 'Tambah Tujuan Kegiatan Gagal', 'error');
+                    }
+                    $data['content'] = 'admin/form_kegiatan';
+                    $this->load->view('admin/layout/wrapper', $data);
+                } else {
+                    $data = array(
+                        'tujuan_kegiatan' => $this->input->post('tujuan_kegiatan')
+                    );
+                    $this->Model_admin->addDataKegiatan($data);
+                    flashData('Tujuan Kegiatan berhasil ditambahkan!', 'Tambah Tujuan Kegiatan Berhasil', 'success');
+                    redirect('admin/kegiatan', 'refresh');
+                }
+            }
+            $data['content'] = 'admin/form_kegiatan';
+            $this->load->view('admin/layout/wrapper', $data);
+        } elseif ($act == "hapus" && $id != null) {
+            $this->load->model('Model_admin');
+            $this->db->where('id_kegiatan', $id);
+            $this->db->delete('tujuan_kegiatan');
+            flashData('Tujuan Kegiatan berhasil dihapus!', 'Hapus Tujuan Kegiatan Berhasil', 'success');
+            redirect('admin/kegiatan', 'refresh');
+        } elseif ($act == null && $id == null) {
+            $data['content'] = 'admin/kegiatan';
+            $this->load->model('Model_admin');
+            $data['kegiatan'] = $this->Model_admin->getAllDataKegiatan();
+            $this->load->view('admin/layout/wrapper', $data);
+        }
     }
 
     function laporan()

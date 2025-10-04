@@ -14,9 +14,10 @@
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>No</th>
                                     <th>Tujuan Kegiatan</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -24,6 +25,9 @@
                                     <tr>
                                         <td><?= $kegiatan['id_kegiatan'] ?></td>
                                         <td><?= $kegiatan['tujuan_kegiatan'] ?></td>
+                                        <td class="text-center  ">
+                                            <a href="<?= base_url('admin/kegiatan/hapus/' . $kegiatan['id_kegiatan']) ?>" class="btn btn-danger btn-sm btnDelete"><i class="fas fa-trash mr-2"></i>Hapus</a>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
