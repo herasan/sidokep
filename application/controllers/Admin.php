@@ -147,15 +147,33 @@ class Admin extends CI_Controller
             $this->load->model('Model_admin');
             $data['kegiatan'] = $this->Model_admin->getAllDataKegiatan();
             $this->load->view('admin/layout/wrapper', $data);
+        } else {
+            $this->load->view('404');
         }
     }
 
-    function laporan()
+    function laporan($act = null, $id = null)
     {
-        $data['content'] = 'admin/laporan';
-        $this->load->model('Model_admin');
-        $data['laporan'] = $this->Model_admin->getAllDataLaporan();
-        $this->load->view('admin/layout/wrapper', $data);
+        if ($act == "detail" && $id != null) {
+            $this->load->model('Model_admin');
+            $data['laporan'] = $this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->row_array();
+            $data['content'] = 'admin/detail_laporan';
+            $data['kegiatan'] = $this->Model_admin->getAllDataKegiatan();
+            $this->load->view('admin/layout/wrapper', $data);
+        } elseif( $act == "hapus" && $id != null) {
+            $this->load->model('Model_admin');
+            $this->db->where('id_dokumentasi', $id);
+            $this->db->delete('dokumentasi_kegiatan');
+            flashData('Doku Kegiatan berhasil dihapus!', 'Hapus Dokumentasi Kegiatan Berhasil', 'success');
+            redirect('admin/laporan', 'refresh');
+        } elseif ($act == null && $id == null) {
+            $data['content'] = 'admin/laporan';
+            $this->load->model('Model_admin');
+            $data['laporan'] = $this->Model_admin->getAllDataLaporan();
+            $this->load->view('admin/layout/wrapper', $data);
+        } else {
+            $this->load->view('404');
+        }
     }
 }
 

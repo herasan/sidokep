@@ -12,8 +12,8 @@
                     <form action="" method="post">
 
                         <div class="form-group">
-                            <label for="kegiatan">Kegiatan</label>
-                            <input type="text" class="form-control" id="kegiatan" name="kegiatan"
+                            <label for="tujuan_kegiatan">Kegiatan</label>
+                            <input type="text" class="form-control" id="tujuan_kegiatan" name="tujuan_kegiatan"
                                 placeholder="Masukkan kegiatan" value="<?= set_value('kegiatan'); ?>" required>
                             <?= form_error('kegiatan', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>

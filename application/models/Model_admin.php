@@ -12,6 +12,10 @@ class Model_admin extends CI_Model {
         return $query->result_array();
     }
 
+    function addDataKegiatan($data) {
+        $this->db->insert('tujuan_kegiatan', $data);
+    }
+
     function getAllDataLaporan() {
         $query = $this->db->get('dokumentasi_kegiatan');
         return $query->result_array();

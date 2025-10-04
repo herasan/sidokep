@@ -8,7 +8,7 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tabel Kegiatan</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Tabel Laporan</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -34,8 +34,8 @@
                                         <td><?= $laporan['tempat_kegiatan'] ?></td>
                                         <td><?= $laporan['tanggal_kegiatan'] ?></td>
                                         <td class="text-center">
-                                            <a href="<?= base_url('detail_laporan/' . $laporan['id_dokumentasi']) ?>" class="btn btn-sm btn-primary"><i class="fas fa-fw fa-eye"></i></a>
-                                            <a href="<?= base_url('hapus_laporan/' . $laporan['id_dokumentasi']) ?>" class="btn btn-sm btn-danger"><i class="fas fa-fw fa-trash"></i></a>
+                                            <a href="<?= base_url('admin/laporan/detail/' . $laporan['id_dokumentasi']) ?>" class="btn btn-sm btn-primary"><i class="fas fa-fw fa-eye"></i></a>
+                                            <a href="<?= base_url('admin/laporan/hapus/' . $laporan['id_dokumentasi']) ?>" class="btn btn-sm btn-danger btnDelete"><i class="fas fa-fw fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

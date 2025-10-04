@@ -137,7 +137,7 @@
                             <!-- Deskripsi -->
                             <div class="mb-3">
                                 <label for="hasil_kegiatan" class="form-label">Hasil Kegiatan</label>
-                                <textarea class="form-control <?= form_error('hasil_kegiatan') ? 'is-invalid' : '' ?>" id="hasil_kegiatan" name="hasil_kegiatan" rows="3" placeholder="Tuliskan notulen hasil kegiatan..." required><?= set_value('hasil_kegiatan'); ?></textarea>
+                                <textarea class="form-control <?= form_error('hasil_kegiatan') ? 'is-invalid' : '' ?>" id="hasil_kegiatan" name="hasil_kegiatan" rows="20" placeholder="Tuliskan notulen hasil kegiatan..." required><?= set_value('hasil_kegiatan'); ?></textarea>
                                 <div class="invalid-feedback">
                                     <?= form_error('hasil_kegiatan'); ?>
                                 </div>
@@ -147,7 +147,6 @@
                                 <label for="tanggalKegiatan" class="form-label">Foto Kegiatan</label>
                                 <div class="container">
                                     <div class="row g-4">
-
                                         <!-- Foto Samping Kanan -->
                                         <div class="col-lg-6">
                                             <label class="upload-box">
@@ -159,7 +158,6 @@
                                                 <img id="preview1" alt="Preview Foto Samping Kanan">
                                             </label>
                                         </div>
-
                                         <!-- Foto Samping Kiri -->
                                         <div class="col-lg-6">
                                             <label class="upload-box">
@@ -171,7 +169,6 @@
                                                 <img id="preview2" alt="Preview Foto Samping Kiri">
                                             </label>
                                         </div>
-
                                         <!-- Foto Tampak Depan -->
                                         <div class="col-lg-6">
                                             <label class="upload-box">
@@ -183,7 +180,6 @@
                                                 <img id="preview3" alt="Preview Foto Tampak Depan">
                                             </label>
                                         </div>
-
                                         <!-- Foto Tampak Belakang -->
                                         <div class="col-lg-6">
                                             <label class="upload-box">

@@ -7,8 +7,9 @@
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
+                <div class="card-header py-3 d-flex justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Tabel Kegiatan</h6>
+                    <a href="<?= base_url('admin/kegiatan/add') ?>" class="btn btn-primary p-2 font-bold"><i class="fas fa-plus mr-2"></i>Tambah Kegiatan</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
