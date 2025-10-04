@@ -73,7 +73,7 @@
                                 <label for="pelaporKegiatan" class="form-label">Pelapor Kegiatan</label>
                                 <input type="text" class="form-control <?= form_error('pelapor_kegiatan') ? 'is-invalid' : '' ?>" id="pelaporKegiatan" name="pelapor_kegiatan" placeholder="Nama Pelapor"
                                     value="<?= $login['nama']; ?>"
-                                    style="background-color: #e9ecef; color: #6c757d;">
+                                    style="background-color: #e9ecef; color: #6c757d;" readonly required>
                                 <div class="invalid-feedback">
                                     <?= form_error('pelapor_kegiatan'); ?>
                                 </div>
@@ -232,6 +232,8 @@
     <script>
         document.getElementById("tujuan_kegiatan").addEventListener("change", function() {
             var lainnyaDiv = document.getElementById("lainnyaTujuan");
+            console.log('ok');
+
             if (this.value == "Lainnya") {
                 lainnyaDiv.style.display = "block";
                 lainnyaDiv.querySelector("input").setAttribute("required", "required");
@@ -242,7 +244,7 @@
         });
     </script>
 
-<script>
+    <script>
     </script>
     <script>
         $(document).ready(function() {
@@ -251,10 +253,18 @@
                 width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
                 placeholder: $(this).data('placeholder'),
             });
-            $('.js-example-basic-single').select2({
-                placeholder: "Pilih Tujuan Kegiatan",
-                allowClear: true
-            });
+        });
+    </script>
+    <script>
+        // Event change
+        $('#tujuan_kegiatan').on('change', function() {
+            if ($('#tujuan_kegiatan').find(':selected').text() == "Lainnya") {
+                $('#lainnyaTujuan').show();
+                $('#lainnya_tujuan').attr('required', true);
+            } else {
+                $('#lainnyaTujuan').hide();
+                $('#lainnya_tujuan').removeAttr('required');
+            }
         });
     </script>
 
