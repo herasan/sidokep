@@ -5,7 +5,7 @@ const icon = $('.flashData').data('icon');
 const flash = document.querySelector('.flashData')
 
 if (message && tittle && icon) {
-
+  
   Swal.fire({
     icon: icon,
     title: tittle,
@@ -62,3 +62,4 @@ $('table tbody').on('click', '.btnDelete', function (e) {
   cancelBtn.style.marginRight = "15px";
 });
 // ================== SWEETALERT BUTTON DELETE ==============================
+

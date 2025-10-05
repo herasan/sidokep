@@ -11,6 +11,15 @@ class Admin extends CI_Controller
 
     public function index()
     {
+        date_default_timezone_set('Asia/Jakarta');
+        access(['Admin', 'Pimpinan']);
+        $this->load->model('Model_admin');
+
+        $data['laporan_bulan_lalu'] = $this->Model_admin->jumlahLaporanBulanLalu();
+        $data['laporan_bulan'] = $this->Model_admin->jumlahLaporanBulan();
+        $data['laporan_tahun'] = $this->Model_admin->jumlahLaporanTahun();
+        $data['total_laporan'] = $this->Model_admin->jumlahTotalLaporan();
+        $data['perbulan'] = $this->Model_admin->laporanPerBulan();
         $data['content'] = 'admin/dashboard';
         $this->load->view('admin/layout/wrapper', $data);
     }
@@ -18,11 +27,21 @@ class Admin extends CI_Controller
     // PEGAWAI
     function pegawai($act = null, $id = null)
     {
+        access(['Admin']);
+
         if ($act == "delete" && $id != null) {
+            if ($this->db->get_where('users', ['id_user' => $id])->num_rows() < 1) {
+                $this->load->view('404');
+                return;
+            }
             $this->load->model('Model_admin');
             $this->Model_admin->deleteDataPegawai($id);
             redirect('admin/pegawai', 'refresh');
         } elseif ($act == "edit" && $id != null) {
+            if ($this->db->get_where('users', ['id_user' => $id])->num_rows() < 1) {
+                $this->load->view('404');
+                return;
+            }
             $this->load->model('Model_admin');
             if ($this->input->post()) {
                 $this->form_validation->set_rules('nama', 'Nama Pegawai', 'required');
@@ -115,6 +134,8 @@ class Admin extends CI_Controller
 
     function kegiatan($act = null, $id = null)
     {
+        access(['Admin']);
+
         if ($act == "add" && $id == null) {
             $this->load->model('Model_admin');
             if ($this->input->post()) {
@@ -137,6 +158,10 @@ class Admin extends CI_Controller
             $data['content'] = 'admin/form_kegiatan';
             $this->load->view('admin/layout/wrapper', $data);
         } elseif ($act == "hapus" && $id != null) {
+            if ($this->db->get_where('tujuan_kegiatan', ['id_kegiatan' => $id])->num_rows() < 1) {
+                $this->load->view('404');
+                return;
+            }
             $this->load->model('Model_admin');
             $this->db->where('id_kegiatan', $id);
             $this->db->delete('tujuan_kegiatan');
@@ -154,13 +179,23 @@ class Admin extends CI_Controller
 
     function laporan($act = null, $id = null)
     {
+        access(['Admin', 'Pimpinan']);
+
         if ($act == "detail" && $id != null) {
+            if ($this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->num_rows() < 1) {
+                $this->load->view('404');
+                return;
+            }
             $this->load->model('Model_admin');
             $data['laporan'] = $this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->row_array();
             $data['content'] = 'admin/detail_laporan';
             $data['kegiatan'] = $this->Model_admin->getAllDataKegiatan();
             $this->load->view('admin/layout/wrapper', $data);
         } elseif( $act == "hapus" && $id != null) {
+            if ($this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->num_rows() < 1) {
+                $this->load->view('404');
+                return;
+            }
             $this->load->model('Model_admin');
             $this->db->where('id_dokumentasi', $id);
             $this->db->delete('dokumentasi_kegiatan');

@@ -8,14 +8,15 @@ class Auth extends CI_Controller
     {
         parent::__construct();
     }
-
+    
     public function index()
     {
         redirect('auth/login', 'refresh');
     }
-
+    
     public function login()
     {
+        hasbeenLoggedIn();
         if ($this->input->post()) {
             // Validasinya success
             $username = $this->input->post('username');
@@ -30,8 +31,10 @@ class Auth extends CI_Controller
 
                     // Kalau semua sudah dicek maka buat session
                     $data = [
+                        'id_user' => $user['id_user'],
                         'username' => $user['username'],
-                        'role' => $user['role']
+                        'nama' => $user['nama'],
+                        'role' => $user['role'],
                     ];
 
                     $this->session->set_userdata($data);
@@ -60,7 +63,13 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('home', 'refresh');
+        redirect('home');
+    }
+
+    function error()
+    {
+        $this->load->view('404');
+        
     }
 }
 

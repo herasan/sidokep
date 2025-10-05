@@ -23,6 +23,11 @@
 
     <!-- Jquery -->
      
+    <script src="<?= base_url('assets/admin/') ?>vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="<?= base_url('assets/admin/') ?>js/demo/chart-area-demo.js"></script>
+    <script src="<?= base_url('assets/admin/') ?>js/demo/chart-pie-demo.js"></script>
     <script src="<?= base_url('assets/admin/') ?>vendor/jquery/jquery.min.js"></script>
     <link rel="stylesheet" href="<?= base_url('assets/sweetalert/') ?>sweetalert2.css">
     

@@ -24,10 +24,15 @@
                 <?php endif; ?>
             </ul>
             <div class="text-end">
-                <a href="<?= base_url('auth/login') ?>" class="btn btn-outline-light me-2">
-                    Login
-                </a>
-                <a href="<?= base_url('auth/register') ?>" class="btn btn-warning">Sign-up</a>
+                <?php if (!$this->session->userdata('role')) : ?>
+                    <a href="<?= base_url('auth/login') ?>" class="btn btn-outline-light me-2">
+                        Login
+                    </a>
+                <?php elseif ($this->session->userdata('username') && $this->session->userdata('role')) : ?>
+                    <a href="<?= base_url('auth/logout') ?>" class="btn btn-outline-priamry btn-warning me-2">
+                        Logout
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

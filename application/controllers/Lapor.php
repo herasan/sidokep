@@ -8,6 +8,7 @@ class Lapor extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_lapor');
+        access(['Pegawai', 'Admin', 'Pimpinan']);
     }
 
     public function index()
