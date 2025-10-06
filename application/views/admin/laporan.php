@@ -25,9 +25,10 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $i = 1; ?>
                                 <?php foreach ($laporan as $laporan) : ?>
-                                    <tr class="">
-                                        <td><?= $laporan['id_dokumentasi'] ?></td>
+                                    <tr>
+                                        <td><?= $i++ ?></td>
                                         <td><?= $laporan['pelapor_kegiatan'] ?></td>
                                         <td><?= $laporan['nama_kegiatan'] ?></td>
                                         <td><?= $laporan['tujuan_kegiatan'] ?></td>

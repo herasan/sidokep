@@ -133,7 +133,9 @@ class Lapor extends CI_Controller
         }
     }
 
-    function detail_laporan($id) {}
+    function detail_laporan($id) {
+        
+    }
 
     function hapus_laporan($id) {}
 }
