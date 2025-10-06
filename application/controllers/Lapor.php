@@ -76,9 +76,30 @@ class Lapor extends CI_Controller
 
                             unlink(FCPATH . 'assets/img/foto_kegiatan/foto/' . $uploadData['file_name']);
                         } else {
+                            // 🔥 HAPUS semua file yang sudah berhasil diupload sebelumnya
+                            foreach ($upload['totalFiles'] as $file) {
+                                if (file_exists('./assets/img/foto_kegiatan/foto/' . $file)) {
+                                    unlink('./assets/img/foto_kegiatan/foto/' . $file);
+                                }
+                                if (file_exists('./assets/img/foto_kegiatan/thumb/' . $file)) {
+                                    unlink('./assets/img/foto_kegiatan/thumb/' . $file);
+                                }
+                            }
                             flashData('File yang diupload ada yang belum sesuai!', 'Gagal Upload File', 'error');
                             redirect('lapor', 'refresh');
                         }
+                    } else {
+                        // 🔥 HAPUS semua file yang sudah berhasil diupload sebelumnya
+                        foreach ($upload['totalFiles'] as $file) {
+                            if (file_exists('./assets/img/foto_kegiatan/foto/' . $file)) {
+                                unlink('./assets/img/foto_kegiatan/foto/' . $file);
+                            }
+                            if (file_exists('./assets/img/foto_kegiatan/thumb/' . $file)) {
+                                unlink('./assets/img/foto_kegiatan/thumb/' . $file);
+                            }
+                        }
+                        flashData('File yang diupload ada yang belum sesuai!', 'Gagal Upload File', 'error');
+                        redirect('lapor', 'refresh');
                     }
                 }
             }
@@ -112,12 +133,8 @@ class Lapor extends CI_Controller
         }
     }
 
-    function detail_laporan($id) {
-        
-    }
+    function detail_laporan($id) {}
 
-    function hapus_laporan($id) {
-        
-    }
+    function hapus_laporan($id) {}
 }
 /* End of file: Lapor.php */
