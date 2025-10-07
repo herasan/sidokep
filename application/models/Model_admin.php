@@ -26,6 +26,46 @@ class Model_admin extends CI_Model
         return $query->result_array();
     }
 
+    public function get_filtered_data($start_date = null, $end_date = null, $pelapor = null, $jenis_kegiatan = null)
+    {
+        $this->db->select('*');
+        $this->db->from('dokumentasi_kegiatan'); // sesuaikan nama tabel kamu
+
+        if (!empty($start_date) && !empty($end_date)) {
+            $this->db->where('tanggal_kegiatan >=', $start_date);
+            $this->db->where('tanggal_kegiatan <=', $end_date);
+        }
+
+          if (!empty($jenis_kegiatan)) {
+            $this->db->where('jenis_kegiatan', $jenis_kegiatan);
+        }
+
+        if (!empty($pelapor)) {
+            $this->db->where('pelapor_kegiatan', $pelapor);
+        }
+
+        $this->db->order_by('tanggal_kegiatan', 'DESC');
+        return $this->db->get()->result_array();
+    }
+
+    public function get_jenis_list()
+    {
+        $this->db->distinct();
+        $this->db->select('jenis_kegiatan');
+        $this->db->from('jenis_kegiatan');
+        $this->db->order_by('jenis_kegiatan', 'ASC');
+        return $this->db->get()->result_array();
+    }
+
+    public function get_pelapor_list()
+    {
+        $this->db->distinct();
+        $this->db->select('nama');
+        $this->db->from('users');
+        $this->db->order_by('nama', 'ASC');
+        return $this->db->get()->result_array();
+    }
+
     function jumlahLaporanBulanLalu()
     {
         $bulan_lalu = date('m', strtotime('-1 month'));

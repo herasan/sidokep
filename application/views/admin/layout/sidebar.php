@@ -70,7 +70,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Kegiatan
+                Laporan
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->

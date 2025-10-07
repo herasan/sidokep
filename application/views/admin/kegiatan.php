@@ -3,7 +3,7 @@
 
             <!-- Page Heading -->
             <h1 class="h3 mb-2 text-gray-800">Data Kegiatan</h1>
-            <p class="mb-4 col-lg-8 text-justify">Tabel Kegiatan ini memuat daftar tujuan kegiatan yang telah dilaksanakan. Data tersebut menjadi bukti nyata dalam SPJ bahwa kegiatan benar-benar direalisasikan sesuai rencana. Selain itu, tabel ini juga mendukung pencatatan capaian dalam E-Kinerja (Ekin) untuk menilai kontribusi pegawai terhadap target organisasi.</p>
+            <p class="mb-4 col-lg-12 text-justify">Data Kegiatan ini memuat daftar jenis kegiatan yang telah ditetapkan dan digunakan sebagai acuan dalam proses pelaporan kegiatan di Puskesmas. Melalui tabel ini, admin atau petugas dapat menambah dan menghapus jenis kegiatan sesuai kebutuhan program yang berjalan. Setiap jenis kegiatan yang tercantum di sini akan muncul sebagai pilihan pada menu pelaporan, sehingga pegawai dapat memilih jenis kegiatan yang sesuai saat membuat laporan. Dengan adanya pengelolaan data kegiatan ini, proses pelaporan menjadi lebih terstruktur, seragam, dan mudah dipantau sesuai bidang tugas serta program yang dilaksanakan di Puskesmas.</p>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">

@@ -89,12 +89,12 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="namaKegiatan" class="form-label">Nama Kegiatan</label>
+                                <label for="judul_kegiatan" class="form-label">Judul Kegiatan</label>
                                 <input type="text"
                                     class="form-control <?= form_error('judul_kegiatan') ? 'is-invalid' : '' ?>"
                                     value="<?= set_value('judul_kegiatan'); ?>"
                                     name="judul_kegiatan"
-                                    id="namaKegiatan"
+                                    id="judul_kegiatan"
                                     placeholder="Contoh: Penyuluhan Kesehatan"
                                     required>
                                 <div class="invalid-feedback">

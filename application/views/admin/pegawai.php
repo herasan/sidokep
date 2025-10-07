@@ -3,7 +3,7 @@
 
             <!-- Page Heading -->
             <h1 class="h3 mb-2 text-gray-800">Data Pegawai</h1>
-            <p class="mb-4">Tabel ini berisi data pegawai Puskesmas Kebumen 1. Hanya admin yang dapat melakukan penambahan pegawai. Silahkan menghubungi admin apabila ingin menambahkan pegawai baru.</p>
+            <p class="mb-4 text-justify">Tabel ini berisi data pegawai Puskesmas Kebumen 1. Alur Pelaporan Kegiatan pada sistem ini terintegrasi langsung dengan data pegawai Puskesmas, sehingga setiap laporan yang dikirimkan akan tercatat atas nama pegawai yang bersangkutan sesuai akun yang digunakan saat login. Sebelum membuat laporan, pegawai wajib melakukan proses login terlebih dahulu untuk memastikan keabsahan identitas dan kesesuaian data dengan daftar pegawai aktif yang telah terdaftar dalam sistem. Setelah login, pengguna dapat menginput laporan kegiatan sesuai dengan bidang tugas, jenis kegiatan, serta waktu pelaksanaan yang sebenarnya, lengkap dengan keterangan pendukung yang diperlukan. Proses ini bertujuan untuk menjaga keamanan dan akurasi data, menghindari duplikasi pelaporan, serta memudahkan penanggung jawab program dan pimpinan dalam melakukan monitoring, evaluasi, dan rekapitulasi kegiatan setiap pegawai secara sistematis dan terverifikasi.</p>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">

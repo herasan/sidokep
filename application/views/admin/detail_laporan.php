@@ -18,14 +18,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="judul_kegiatan">Nama Kegiatan</label>
+                            <label for="jenis_kegiatan">Jenis Kegiatan</label>
+                            <input type="text" class="form-control" id="jenis_kegiatan" name="jenis_kegiatan" value="<?= $laporan['jenis_kegiatan'] ?>" readonly>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="judul_kegiatan">Judul Kegiatan</label>
                             <input type="text" class="form-control" id="judul_kegiatan" name="judul_kegiatan" value="<?= $laporan['judul_kegiatan'] ?>" readonly>
                         </div>
 
-                        <div class="form-group">
-                            <label for="jenis_kegiatan">Tujuan Kegiatan</label>
-                            <input type="text" class="form-control" id="jenis_kegiatan" name="jenis_kegiatan" value="<?= $laporan['jenis_kegiatan'] ?>" readonly>
-                        </div>
 
                         <div class="form-group">
                             <label for="tempat_kegiatan">Tempat Kegiatan</label>

@@ -63,6 +63,7 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
+        flashData('Anda telah logout', 'Logout Berhasil', 'success');
         redirect('home');
     }
 

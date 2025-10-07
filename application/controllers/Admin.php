@@ -203,24 +203,36 @@ class Admin extends CI_Controller
             $data['content'] = 'admin/detail_laporan';
             $data['kegiatan'] = $this->Model_admin->getAllDataKegiatan();
             $this->load->view('admin/layout/wrapper', $data);
-        } elseif( $act == "hapus" && $id != null) {
+        } elseif ($act == "hapus" && $id != null) {
             if ($this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->num_rows() < 1) {
                 $this->load->view('404');
                 return;
             }
             $this->load->model('Model_admin');
             $laporan = $this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->row_array();
-            for ($i=1; $i <= 4; $i++) { 
-                unlink(FCPATH . 'assets/img/foto_kegiatan/thumb/' . $laporan['foto'.$i]);
+            for ($i = 1; $i <= 4; $i++) {
+                unlink(FCPATH . 'assets/img/foto_kegiatan/thumb/' . $laporan['foto' . $i]);
             }
             $this->db->where('id_dokumentasi', $id);
             $this->db->delete('dokumentasi_kegiatan');
             flashData('Doku Kegiatan berhasil dihapus!', 'Hapus Dokumentasi Kegiatan Berhasil', 'success');
             redirect('admin/laporan', 'refresh');
         } elseif ($act == null && $id == null) {
-            $data['content'] = 'admin/laporan';
             $this->load->model('Model_admin');
-            $data['laporan'] = $this->Model_admin->getAllDataLaporan();
+            // Ambil input dari GET (filter)
+            $start_date = $this->input->get('start_date');
+            $end_date   = $this->input->get('end_date');
+            $jenis_kegiatan = $this->input->get('jenis_kegiatan');
+            $pelapor    = $this->input->get('pelapor');
+
+            // Data untuk dropdown pelapor
+            $data['jenis_list']   = $this->Model_admin->get_jenis_list();
+            $data['pelapor_list'] = $this->Model_admin->get_pelapor_list();
+
+            // Ambil data kegiatan sesuai filter
+            $data['laporan'] = $this->Model_admin->get_filtered_data($start_date, $end_date, $pelapor, $jenis_kegiatan);
+
+            $data['content'] = 'admin/laporan';
             $this->load->view('admin/layout/wrapper', $data);
         } else {
             $this->load->view('404');

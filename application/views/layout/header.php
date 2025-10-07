@@ -15,10 +15,10 @@
                 <li><a href="<?= base_url('home') ?>/#fitur" class="nav-link px-2 text-white">Feature</a></li>
                 <?php if ($this->session->userdata('role') == "Pegawai") : ?>
                     <li><a href="<?= base_url('lapor') ?>" class="nav-link px-2 text-white">Lapor</a></li>
-                    <li><a href="<?= base_url('lapor/list') ?>" class="nav-link px-2 text-white">MyLaporan</a></li>
+                    <li><a href="<?= base_url('lapor/laporan') ?>" class="nav-link px-2 text-white">MyLaporan</a></li>
                 <?php elseif ($this->session->userdata('role') == "Admin" || $this->session->userdata('role') == "Kepala") : ?>
                     <li><a href="<?= base_url('lapor') ?>" class="nav-link px-2 text-white">Lapor</a></li>
-                    <li><a href="<?= base_url('lapor/list') ?>" class="nav-link px-2 text-white">MyLaporan</a></li>
+                    <li><a href="<?= base_url('lapor/laporan') ?>" class="nav-link px-2 text-white">MyLaporan</a></li>
                     <li><a href="<?= base_url('admin') ?>" class="nav-link px-2 text-white">Webmin</a></li>
                 <?php else : ?>
                 <?php endif; ?>

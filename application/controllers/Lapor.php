@@ -14,7 +14,7 @@ class Lapor extends CI_Controller
     public function index()
     {
         $this->form_validation->set_rules('pelapor_kegiatan', 'Pelapor Kegiatan', 'required');
-        $this->form_validation->set_rules('judul_kegiatan', 'Nama Kegiatan', 'required|numeric');
+        $this->form_validation->set_rules('judul_kegiatan', 'Nama Kegiatan', 'required');
         $this->form_validation->set_rules('jenis_kegiatan', 'Tujuan Kegiatan', 'required');
         if ($this->input->post('jenis_kegiatan') == 'Lainnya') {
             $this->form_validation->set_rules('lainnya_tujuan', 'Kegiatan Lainnya', 'required');
@@ -134,9 +134,23 @@ class Lapor extends CI_Controller
         }
     }
 
-    function detail_laporan($id) {
+    function laporan()
+    {
+        $this->load->model('Model_lapor');
+        $data['login'] = $this->db->get_where('users', ['username' => $this->session->userdata('username')])->row_array();
+        $data['content'] = 'home/my_laporan';
 
+        $start_date     = $this->input->get('start_date');
+        $end_date       = $this->input->get('end_date');
+        $jenis_kegiatan = $this->input->get('jenis_kegiatan');
+
+        // Filter data sesuai input
+        $data['laporan'] = $this->Model_lapor->get_by_user_filter($data['login']['id_user'], $start_date, $end_date, $jenis_kegiatan);
+        $data['jenis_list'] = $this->Model_lapor->get_jenis_list();
+        $this->load->view('layout/wrapper', $data);
     }
+
+    function detail_laporan($id) {}
 
     function hapus_laporan($id) {}
 }
