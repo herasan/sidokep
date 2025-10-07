@@ -12,7 +12,7 @@ class Admin extends CI_Controller
     public function index()
     {
         date_default_timezone_set('Asia/Jakarta');
-        access(['Admin', 'Pimpinan']);
+        access(['Admin', 'Kepala']);
         $this->load->model('Model_admin');
 
         $data['laporan_bulan_lalu'] = $this->Model_admin->jumlahLaporanBulanLalu();
@@ -64,15 +64,27 @@ class Admin extends CI_Controller
                     $data['content'] = 'admin/form_pegawai';
                     $this->load->view('admin/layout/wrapper', $data);
                 } else {
-                    $data = array(
-                        'nama' => $this->input->post('nama'),
-                        'status' => $this->input->post('status'),
-                        'nip' => $this->input->post('nip'),
-                        'username' => $this->input->post('username'),
-                        'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
-                        'jabatan' => $this->input->post('jabatan'),
-                        'role' => $this->input->post('role')
-                    );
+                    if ($this->input->post('status') == 'ASN') {
+                        $data = array(
+                            'nama' => $this->input->post('nama'),
+                            'status' => $this->input->post('status'),
+                            'nip' => $this->input->post('nip'),
+                            'username' => $this->input->post('username'),
+                            'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
+                            'jabatan' => $this->input->post('jabatan'),
+                            'role' => $this->input->post('role')
+                        );
+                    } else {
+                        $data = array(
+                            'nama' => $this->input->post('nama'),
+                            'status' => $this->input->post('status'),
+                            'nip' => '',
+                            'username' => $this->input->post('username'),
+                            'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
+                            'jabatan' => $this->input->post('jabatan'),
+                            'role' => $this->input->post('role')
+                        );
+                    }
                     $this->Model_admin->updateDataPegawai($data, $id);
                     flashData('Pegawai berhasil diubah!', 'Edit Pegawai Berhasil', 'success');
                     redirect('admin/pegawai', 'refresh');
@@ -139,7 +151,7 @@ class Admin extends CI_Controller
         if ($act == "add" && $id == null) {
             $this->load->model('Model_admin');
             if ($this->input->post()) {
-                $this->form_validation->set_rules('tujuan_kegiatan', 'Tujuan Kegiatan', 'required|is_unique[tujuan_kegiatan.tujuan_kegiatan]');
+                $this->form_validation->set_rules('jenis_kegiatan', 'Tujuan Kegiatan', 'required|is_unique[jenis_kegiatan.jenis_kegiatan]');
                 if ($this->form_validation->run() == FALSE) {
                     if ($this->form_validation->error_array()) {
                         flashData('Tujuan Kegiatan gagal ditambahkan!', 'Tambah Tujuan Kegiatan Gagal', 'error');
@@ -148,7 +160,7 @@ class Admin extends CI_Controller
                     $this->load->view('admin/layout/wrapper', $data);
                 } else {
                     $data = array(
-                        'tujuan_kegiatan' => $this->input->post('tujuan_kegiatan')
+                        'jenis_kegiatan' => $this->input->post('jenis_kegiatan')
                     );
                     $this->Model_admin->addDataKegiatan($data);
                     flashData('Tujuan Kegiatan berhasil ditambahkan!', 'Tambah Tujuan Kegiatan Berhasil', 'success');
@@ -158,13 +170,13 @@ class Admin extends CI_Controller
             $data['content'] = 'admin/form_kegiatan';
             $this->load->view('admin/layout/wrapper', $data);
         } elseif ($act == "hapus" && $id != null) {
-            if ($this->db->get_where('tujuan_kegiatan', ['id_kegiatan' => $id])->num_rows() < 1) {
+            if ($this->db->get_where('jenis_kegiatan', ['id_kegiatan' => $id])->num_rows() < 1) {
                 $this->load->view('404');
                 return;
             }
             $this->load->model('Model_admin');
             $this->db->where('id_kegiatan', $id);
-            $this->db->delete('tujuan_kegiatan');
+            $this->db->delete('jenis_kegiatan');
             flashData('Tujuan Kegiatan berhasil dihapus!', 'Hapus Tujuan Kegiatan Berhasil', 'success');
             redirect('admin/kegiatan', 'refresh');
         } elseif ($act == null && $id == null) {
@@ -179,7 +191,7 @@ class Admin extends CI_Controller
 
     function laporan($act = null, $id = null)
     {
-        access(['Admin', 'Pimpinan']);
+        access(['Admin', 'Kepala']);
 
         if ($act == "detail" && $id != null) {
             if ($this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->num_rows() < 1) {
@@ -198,8 +210,8 @@ class Admin extends CI_Controller
             }
             $this->load->model('Model_admin');
             $laporan = $this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->row_array();
-            for ($i=0; $i < 4; $i++) { 
-                unlink(FCPATH . 'assets/img/foto_kegiatan/foto/' . $laporan['foto_kegiatan'.$i]);
+            for ($i=1; $i <= 4; $i++) { 
+                unlink(FCPATH . 'assets/img/foto_kegiatan/thumb/' . $laporan['foto'.$i]);
             }
             $this->db->where('id_dokumentasi', $id);
             $this->db->delete('dokumentasi_kegiatan');

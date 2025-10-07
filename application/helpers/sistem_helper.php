@@ -27,7 +27,7 @@ function hasbeenLoggedIn()
     if ($CI->session->userdata('role')) {
         if ($CI->session->userdata('role') == "Admin") {
             redirect(base_url('admin'), 'refresh');
-        } elseif ($CI->session->userdata('role') == "Pimpinan") {
+        } elseif ($CI->session->userdata('role') == "Kepala") {
             redirect(base_url('admin'), 'refresh');
         } else {
             redirect(base_url('home'), 'refresh');

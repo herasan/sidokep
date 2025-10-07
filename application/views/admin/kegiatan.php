@@ -25,7 +25,7 @@
                                 <?php foreach ($kegiatan as $kegiatan) : ?>
                                     <tr>
                                         <td><?= $kegiatan['id_kegiatan'] ?></td>
-                                        <td><?= $kegiatan['tujuan_kegiatan'] ?></td>
+                                        <td><?= $kegiatan['jenis_kegiatan'] ?></td>
                                         <td class="text-center  ">
                                             <a href="<?= base_url('admin/kegiatan/hapus/' . $kegiatan['id_kegiatan']) ?>" class="btn btn-danger btn-sm btnDelete"><i class="fas fa-trash mr-2"></i>Hapus</a>
                                         </td>

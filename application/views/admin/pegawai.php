@@ -33,7 +33,7 @@
                                     <td><?= $pegawai['jabatan'] ?></td>
                                     <td class="text-center">
                                         <a href="<?= base_url('admin/pegawai/edit/' . $pegawai['id_user']) ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                        <a href="<?= base_url('admin/pegawai/delete/' . $pegawai['id_user']) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fas fa-trash"></i> Hapus</a>
+                                        <a href="<?= base_url('admin/pegawai/delete/' . $pegawai['id_user']) ?>" class="btn btn-danger btn-sm tombol-hapus btnDelete"><i class="fas fa-trash"></i> Hapus</a>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

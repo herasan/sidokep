@@ -68,7 +68,7 @@
                             <select class="form-control" id="role" name="role" required>
                                 <option value="">-- Pilih Role --</option>
                                 <option value="Pegawai" <?= set_value('role') == 'Pegawai' ? 'selected' : ''; ?>>Pegawai</option>
-                                <option value="Pimpinan" <?= set_value('role') == 'Pimpinan' ? 'selected' : ''; ?>>Pimpinan</option>
+                                <option value="Kepala" <?= set_value('role') == 'Kepala' ? 'selected' : ''; ?>>Kepala</option>
                                 <option value="Admin" <?= set_value('role') == 'Admin' ? 'selected' : ''; ?>>Admin</option>
                             </select>
                             <?= form_error('role', '<small class="text-danger pl-2">', '</small>'); ?>

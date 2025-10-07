@@ -30,8 +30,8 @@
                                     <tr>
                                         <td><?= $i++ ?></td>
                                         <td><?= $laporan['pelapor_kegiatan'] ?></td>
-                                        <td><?= $laporan['nama_kegiatan'] ?></td>
-                                        <td><?= $laporan['tujuan_kegiatan'] ?></td>
+                                        <td><?= $laporan['judul_kegiatan'] ?></td>
+                                        <td><?= $laporan['jenis_kegiatan'] ?></td>
                                         <td><?= $laporan['tempat_kegiatan'] ?></td>
                                         <td><?= $laporan['tanggal_kegiatan'] ?></td>
                                         <td class="text-center">

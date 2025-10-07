@@ -8,7 +8,7 @@ class Model_lapor extends CI_Model {
     }
 
     function getAllTujuanKegiatan() {
-        $query = $this->db->get('tujuan_kegiatan');
+        $query = $this->db->get('jenis_kegiatan');
         return $query->result_array();
     }
 

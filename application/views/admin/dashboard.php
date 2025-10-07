@@ -165,15 +165,15 @@ var myLineChart = new Chart(ctx, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 7
+          maxTicksLimit: 12
         }
       }],
-      yAxes: [{
+     yAxes: [{
         ticks: {
-          maxTicksLimit: 5,
+          beginAtZero: true, // ✅ memastikan tidak ada nilai negatif
+          stepSize: 1,       // bisa disesuaikan dengan jumlah data
           padding: 10,
-          // Include a dollar sign in the ticks
-          callback: function(value, index, values) {
+          callback: function(value) {
             return number_format(value);
           }
         },

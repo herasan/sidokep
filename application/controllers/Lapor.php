@@ -8,15 +8,15 @@ class Lapor extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_lapor');
-        access(['Pegawai', 'Admin', 'Pimpinan']);
+        access(['Pegawai', 'Admin', 'Kepala']);
     }
 
     public function index()
     {
         $this->form_validation->set_rules('pelapor_kegiatan', 'Pelapor Kegiatan', 'required');
-        $this->form_validation->set_rules('nama_kegiatan', 'Nama Kegiatan', 'required');
-        $this->form_validation->set_rules('tujuan_kegiatan', 'Tujuan Kegiatan', 'required');
-        if ($this->input->post('tujuan_kegiatan') == 'Lainnya') {
+        $this->form_validation->set_rules('judul_kegiatan', 'Nama Kegiatan', 'required|numeric');
+        $this->form_validation->set_rules('jenis_kegiatan', 'Tujuan Kegiatan', 'required');
+        if ($this->input->post('jenis_kegiatan') == 'Lainnya') {
             $this->form_validation->set_rules('lainnya_tujuan', 'Kegiatan Lainnya', 'required');
         }
         $this->form_validation->set_rules('tempat_kegiatan', 'Tanggal Kegiatan', 'required');
@@ -30,7 +30,7 @@ class Lapor extends CI_Controller
 
             $data['login'] = $this->db->get_where('users', ['username' => $this->session->userdata('username')])->row_array();
             $data['content'] = 'home/lapor';
-            $data['tujuan_kegiatan'] = $this->Model_lapor->getAllTujuanKegiatan();
+            $data['jenis_kegiatan'] = $this->Model_lapor->getAllTujuanKegiatan();
             $this->load->view('layout/wrapper', $data);
         } else {
             $upload = [];
@@ -105,18 +105,19 @@ class Lapor extends CI_Controller
             }
 
             $pelapor_kegiatan = $this->input->post('pelapor_kegiatan', true);
-            $nama_kegiatan = $this->input->post('nama_kegiatan', true);
-            $tujuan_kegiatan = $this->input->post('tujuan_kegiatan', true);
-            if ($tujuan_kegiatan == 'Lainnya') {
-                $tujuan_kegiatan = $this->input->post('lainnya_tujuan', true);
+            $judul_kegiatan = $this->input->post('judul_kegiatan', true);
+            $jenis_kegiatan = $this->input->post('jenis_kegiatan', true);
+            if ($jenis_kegiatan == 'Lainnya') {
+                $jenis_kegiatan = $this->input->post('lainnya_tujuan', true);
             }
             $tempat_kegiatan = $this->input->post('tempat_kegiatan', true);
             $tanggal_kegiatan = $this->input->post('tanggal_kegiatan', true);
             $hasil_kegiatan = $this->input->post('hasil_kegiatan', true);
             $data = [
+                'id_pelapor' => $this->session->userdata('id_user'),
                 'pelapor_kegiatan' => $pelapor_kegiatan,
-                'nama_kegiatan' => $nama_kegiatan,
-                'tujuan_kegiatan' => $tujuan_kegiatan,
+                'judul_kegiatan' => $judul_kegiatan,
+                'jenis_kegiatan' => $jenis_kegiatan,
                 'tempat_kegiatan' => $tempat_kegiatan,
                 'tanggal_kegiatan' => $tanggal_kegiatan,
                 'hasil_kegiatan' => $hasil_kegiatan,
@@ -134,7 +135,7 @@ class Lapor extends CI_Controller
     }
 
     function detail_laporan($id) {
-        
+
     }
 
     function hapus_laporan($id) {}

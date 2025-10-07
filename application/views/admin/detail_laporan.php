@@ -2,8 +2,8 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Data Pegawai</h1>
-            <p class="mb-4">Tabel ini berisi data pegawai Puskesmas Kebumen 1. Hanya admin yang dapat melakukan penambahan pegawai. Silahkan menghubungi admin apabila ingin menambahkan pegawai baru.</p>
+            <h1 class="h3 mb-2 text-gray-800">Detail Kegiatan</h1>
+            <p class="mb-4">Halaman ini berisi detail rincian kegiatan lengkap dengan foto sebagai bukti dukung yang kuat.</p>
 
             <!-- DataTales Example -->
             <div class="row">
@@ -18,13 +18,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="nama_kegiatan">Nama Kegiatan</label>
-                            <input type="text" class="form-control" id="nama_kegiatan" name="nama_kegiatan" value="<?= $laporan['nama_kegiatan'] ?>" readonly>
+                            <label for="judul_kegiatan">Nama Kegiatan</label>
+                            <input type="text" class="form-control" id="judul_kegiatan" name="judul_kegiatan" value="<?= $laporan['judul_kegiatan'] ?>" readonly>
                         </div>
 
                         <div class="form-group">
-                            <label for="tujuan_kegiatan">Tujuan Kegiatan</label>
-                            <input type="text" class="form-control" id="tujuan_kegiatan" name="tujuan_kegiatan" value="<?= $laporan['tujuan_kegiatan'] ?>" readonly>
+                            <label for="jenis_kegiatan">Tujuan Kegiatan</label>
+                            <input type="text" class="form-control" id="jenis_kegiatan" name="jenis_kegiatan" value="<?= $laporan['jenis_kegiatan'] ?>" readonly>
                         </div>
 
                         <div class="form-group">

@@ -79,39 +79,26 @@
                                 </div>
                             </div>
                             <div class="mb-3">
+                                <label for="jenis_kegiatan" class="form-label">Jenis Kegiatan</label>
+                                <div class="input-group mb-3">
+                                    <select class="form-select js-example-basic-single" id="jenis_kegiatan" name="jenis_kegiatan" required>
+                                        <?php foreach ($jenis_kegiatan as $tujuan) : ?>
+                                            <option value="<?= $tujuan['jenis_kegiatan'] ?>"><?= $tujuan['jenis_kegiatan'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
                                 <label for="namaKegiatan" class="form-label">Nama Kegiatan</label>
                                 <input type="text"
-                                    class="form-control <?= form_error('nama_kegiatan') ? 'is-invalid' : '' ?>"
-                                    value="<?= set_value('nama_kegiatan'); ?>"
-                                    name="nama_kegiatan"
+                                    class="form-control <?= form_error('judul_kegiatan') ? 'is-invalid' : '' ?>"
+                                    value="<?= set_value('judul_kegiatan'); ?>"
+                                    name="judul_kegiatan"
                                     id="namaKegiatan"
                                     placeholder="Contoh: Penyuluhan Kesehatan"
                                     required>
                                 <div class="invalid-feedback">
-                                    <?= form_error('nama_kegiatan'); ?>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tujuan_kegiatan" class="form-label">Tujuan Kegiatan</label>
-                                <div class="input-group mb-3">
-                                    <select class="form-select js-example-basic-single" id="tujuan_kegiatan" name="tujuan_kegiatan" required>
-                                        <?php foreach ($tujuan_kegiatan as $tujuan) : ?>
-                                            <option value="<?= $tujuan['tujuan_kegiatan'] ?>"><?= $tujuan['tujuan_kegiatan'] ?></option>
-                                        <?php endforeach; ?>
-                                        <option value="Lainnya">Lainnya</option>
-                                    </select>
-                                </div>
-                                <!-- Input tambahan akan tampil kalau pilih Lainnya -->
-                                <div id="lainnyaTujuan" style="display:none; margin-top:10px;">
-                                    <label for="lainnya_tujuan">Tuliskan tujuan lainnya:</label>
-                                    <input type="text" class="form-control <?= form_error('lainnya_tujuan') ? 'is-invalid' : '' ?>"
-                                        id="lainnya_tujuan"
-                                        value="<?= set_value('lainnya_tujuan'); ?>"
-                                        name="lainnya_tujuan"
-                                        placeholder="Masukkan tujuan kegiatan...">
-                                    <div class="invalid-feedback">
-                                        <?= form_error('lainnya_tujuan'); ?>
-                                    </div>
+                                    <?= form_error('judul_kegiatan'); ?>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -226,42 +213,12 @@
         }
     </script>
     <script>
-        document.getElementById("tujuan_kegiatan").addEventListener("change", function() {
-            var lainnyaDiv = document.getElementById("lainnyaTujuan");
-            console.log('ok');
-
-            if (this.value == "Lainnya") {
-                lainnyaDiv.style.display = "block";
-                lainnyaDiv.querySelector("input").setAttribute("required", "required");
-            } else {
-                lainnyaDiv.style.display = "none";
-                lainnyaDiv.querySelector("input").removeAttribute("required");
-            }
-        });
-    </script>
-
-    <script>
-    </script>
-    <script>
         $(document).ready(function() {
-            $('#tujuan_kegiatan').select2({
+            $('#jenis_kegiatan').select2({
                 theme: "bootstrap-5",
                 width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
                 placeholder: $(this).data('placeholder'),
             });
         });
     </script>
-    <script>
-        // Event change
-        $('#tujuan_kegiatan').on('change', function() {
-            if ($('#tujuan_kegiatan').find(':selected').text() == "Lainnya") {
-                $('#lainnyaTujuan').show();
-                $('#lainnya_tujuan').attr('required', true);
-            } else {
-                $('#lainnyaTujuan').hide();
-                $('#lainnya_tujuan').removeAttr('required');
-            }
-        });
-    </script>
-
 </body>
