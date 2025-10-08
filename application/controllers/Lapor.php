@@ -127,7 +127,7 @@ class Lapor extends CI_Controller
             $this->Model_lapor->addLaporan($data);
 
             flashData('Berhasil menambahkan laporan!', 'Tambah Laporan', 'success');
-            redirect('lapor', 'refresh');
+            redirect('lapor/laporan', 'refresh');
         }
     }
 
