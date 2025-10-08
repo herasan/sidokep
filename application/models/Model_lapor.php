@@ -15,6 +15,13 @@ class Model_lapor extends CI_Model
         return $query->result_array();
     }
 
+    function getLaporanById($id) {
+        $this->db->where('id_dokumentasi', $id);
+        $query = $this->db->get('dokumentasi_kegiatan');
+        return $query->row_array();
+        
+    }
+
     function addLaporan($data)
     {
         $this->db->insert('dokumentasi_kegiatan', $data);

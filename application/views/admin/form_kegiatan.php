@@ -18,6 +18,20 @@
                             <?= form_error('kegiatan', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>
 
+                        <!-- Select Klaster -->
+                        <div class="form-group mb-4">
+                            <label for="klaster" class="font-weight-bold">Klaster Kegiatan</label>
+                            <select class="form-control" id="klaster" name="klaster" required>
+                                <option value="">-- Pilih Klaster --</option>
+                                <option value="Klaster 1 (Manajemen)">Klaster 1 (Manajemen)</option>
+                                <option value="Klaster 2 (Ibu dan Anak)">Klaster 2 (Ibu dan Anak)</option>
+                                <option value="Klaster 3 (Usia Dewasa dan Lansia)">Klaster 3 (Usia Dewasa dan Lansia)</option>
+                                <option value="Klaster 4 (Penyakit Menular)">Klaster 4 (Penyakit Menular)</option>
+                                <option value="Klaster 5 (Lintas Klaster)">Klaster 5 (Lintas Klaster)</option>
+                            </select>
+                        </div>
+
+
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="<?= base_url('admin/kegiatan'); ?>" class="btn btn-secondary">Batal</a>
 

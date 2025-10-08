@@ -11,6 +11,7 @@ class Model_admin extends CI_Model
 
     function getAllDataKegiatan()
     {
+        $this->db->order_by('klaster', 'ASC');
         $query = $this->db->get('jenis_kegiatan');
         return $query->result_array();
     }

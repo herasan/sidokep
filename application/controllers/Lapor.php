@@ -107,9 +107,6 @@ class Lapor extends CI_Controller
             $pelapor_kegiatan = $this->input->post('pelapor_kegiatan', true);
             $judul_kegiatan = $this->input->post('judul_kegiatan', true);
             $jenis_kegiatan = $this->input->post('jenis_kegiatan', true);
-            if ($jenis_kegiatan == 'Lainnya') {
-                $jenis_kegiatan = $this->input->post('lainnya_tujuan', true);
-            }
             $tempat_kegiatan = $this->input->post('tempat_kegiatan', true);
             $tanggal_kegiatan = $this->input->post('tanggal_kegiatan', true);
             $hasil_kegiatan = $this->input->post('hasil_kegiatan', true);
@@ -150,8 +147,31 @@ class Lapor extends CI_Controller
         $this->load->view('layout/wrapper', $data);
     }
 
-    function detail_laporan($id) {}
+    function detail($id)
+    {
+        $data['login'] = $this->db->get_where('users', ['username' => $this->session->userdata('username')])->row_array();
+        $data['content'] = 'home/detail_laporan';
+        $data['laporan'] = $this->Model_lapor->getLaporanById($id);
+        if (!$data['laporan']) {
+            redirect('auth/error', 'refresh');
+        }
+        $this->load->view('layout/wrapper', $data);
+    }
 
-    function hapus_laporan($id) {}
+    function hapus($id)
+    {
+        if ($this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->num_rows() < 1) {
+            return redirect('auth/error', 'refresh');
+        }
+        
+        $laporan = $this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->row_array();
+        for ($i = 1; $i <= 4; $i++) {
+            unlink(FCPATH . 'assets/img/foto_kegiatan/thumb/' . $laporan['foto' . $i]);
+        }
+        $this->db->where('id_dokumentasi', $id);
+        $this->db->delete('dokumentasi_kegiatan');
+        flashData('Berhasil menghapus laporan!', 'Hapus Laporan', 'success');
+        redirect('lapor/laporan', 'refresh');
+    }
 }
 /* End of file: Lapor.php */

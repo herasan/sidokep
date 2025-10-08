@@ -151,6 +151,7 @@ class Admin extends CI_Controller
         if ($act == "add" && $id == null) {
             $this->load->model('Model_admin');
             if ($this->input->post()) {
+                $this->form_validation->set_rules('klaster', 'Klaster Kegiatan', 'required');
                 $this->form_validation->set_rules('jenis_kegiatan', 'Tujuan Kegiatan', 'required|is_unique[jenis_kegiatan.jenis_kegiatan]');
                 if ($this->form_validation->run() == FALSE) {
                     if ($this->form_validation->error_array()) {
@@ -160,7 +161,8 @@ class Admin extends CI_Controller
                     $this->load->view('admin/layout/wrapper', $data);
                 } else {
                     $data = array(
-                        'jenis_kegiatan' => $this->input->post('jenis_kegiatan')
+                        'jenis_kegiatan' => $this->input->post('jenis_kegiatan'),
+                        'klaster' => $this->input->post('klaster')
                     );
                     $this->Model_admin->addDataKegiatan($data);
                     flashData('Tujuan Kegiatan berhasil ditambahkan!', 'Tambah Tujuan Kegiatan Berhasil', 'success');

@@ -5,9 +5,7 @@
 
             <h3 class="fw-bold text-success mb-3 text-center">My Laporan</h3>
             <p class="text-muted mb-4 text-center">
-                Halaman ini menampilkan daftar kegiatan yang telah Anda laporkan melalui sistem.
-                Setiap data mencerminkan hasil pelaksanaan kegiatan sesuai bidang tugas Anda di Puskesmas.
-                Anda dapat melihat atau menghapus laporan yang sudah dibuat.
+                Halaman ini menampilkan daftar kegiatan yang telah Anda laporkan melalui sistem. Setiap data mencerminkan hasil pelaksanaan kegiatan sesuai bidang tugas Anda di Puskesmas. Anda dapat melihat atau menghapus laporan yang sudah dibuat.
             </p>
             <!-- 🔍 FILTER FORM -->
             <form method="GET" action="" class="mb-4">
@@ -62,11 +60,10 @@
                                 <td><?= $l['tempat_kegiatan'] ?></td>
                                 <td class="text-center"><?= date('d/m/Y', strtotime($l['tanggal_kegiatan'])) ?></td>
                                 <td class="text-center">
-                                    <a href="<?= base_url('laporan/detail/' . $l['id_dokumentasi']) ?>" class="btn btn-sm btn-info text-white">
+                                    <a href="<?= base_url('lapor/detail/' . $l['id_dokumentasi']) ?>" class="btn btn-sm btn-info text-white">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="<?= base_url('laporan/hapus/' . $l['id_dokumentasi']) ?>" class="btn btn-sm btn-danger"
-                                        onclick="return confirm('Yakin ingin menghapus laporan ini?')">
+                                    <a href="<?= base_url('lapor/hapus/' . $l['id_dokumentasi']) ?>" class="btn btn-sm btn-danger btnDelete">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
