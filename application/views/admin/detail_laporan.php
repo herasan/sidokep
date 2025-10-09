@@ -27,7 +27,6 @@
                             <input type="text" class="form-control" id="judul_kegiatan" name="judul_kegiatan" value="<?= $laporan['judul_kegiatan'] ?>" readonly>
                         </div>
 
-
                         <div class="form-group">
                             <label for="tempat_kegiatan">Tempat Kegiatan</label>
                             <input type="text" class="form-control" id="tempat_kegiatan" name="tempat_kegiatan" value="<?= $laporan['tempat_kegiatan'] ?>" readonly>
@@ -49,10 +48,10 @@
                     <div class="card shadow mb-4 p-4">
                         <!-- Page Heading -->
                         <h1 class="h3 mb-2 text-gray-800">Foto Kegiatan</h1>
-                        <img src="<?= base_url('assets/img/foto_kegiatan/thumb/') . $laporan['foto1'] ?>" class="img-thumbnail" alt="">
-                        <img src="<?= base_url('assets/img/foto_kegiatan/thumb/') . $laporan['foto2'] ?>" class="img-thumbnail" alt="">
-                        <img src="<?= base_url('assets/img/foto_kegiatan/thumb/') . $laporan['foto3'] ?>" class="img-thumbnail" alt="">
-                        <img src="<?= base_url('assets/img/foto_kegiatan/thumb/') . $laporan['foto4'] ?>" class="img-thumbnail" alt="">
+                        <img src="<?= base_url('assets/img/foto_kegiatan/foto/') . $laporan['foto1'] ?>" class="img-thumbnail" alt="">
+                        <img src="<?= base_url('assets/img/foto_kegiatan/foto/') . $laporan['foto2'] ?>" class="img-thumbnail" alt="">
+                        <img src="<?= base_url('assets/img/foto_kegiatan/foto/') . $laporan['foto3'] ?>" class="img-thumbnail" alt="">
+                        <img src="<?= base_url('assets/img/foto_kegiatan/foto/') . $laporan['foto4'] ?>" class="img-thumbnail" alt="">
                     </div>
                 </div>
             </div>

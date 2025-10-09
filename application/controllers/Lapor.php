@@ -34,9 +34,10 @@ class Lapor extends CI_Controller
             $this->load->view('layout/wrapper', $data);
         } else {
             $upload = [];
+            $raw = [];
             if (isset($_FILES['fotos'])) {
                 $count = count($_FILES['fotos']['name']);
-                
+
                 for ($i = 0; $i < $count; $i++) {
                     if (!empty($_FILES['fotos']['name'][$i])) {
                         $_FILES['foto']['name'] = $_FILES['fotos']['name'][$i];
@@ -57,14 +58,14 @@ class Lapor extends CI_Controller
                             // create thumbnail
                             $configer['image_library'] = 'gd2';
                             $configer['source_image'] = $uploadData['full_path'];
-                            $configer['new_image'] = './assets/img/foto_kegiatan/thumb/';
+                            $configer['new_image'] = './assets/img/foto_kegiatan/foto/';
                             $configer['create_thumb'] = TRUE;
                             $configer['maintain_ratio'] = TRUE;
                             $configer['width']         = 600; //pixel
                             $configer['master_dim'] = 'width'; // This ensures the width is maintained, and height is auto
 
                             // agar file yang diconvert tidak ada _thumbs dibelakangnya
-                            $configer['thumb_marker'] = '';
+                            $configer['thumb_marker'] = '_thumb';
 
                             $this->load->library('image_lib', $configer);
                             $this->image_lib->initialize($configer);
@@ -72,16 +73,16 @@ class Lapor extends CI_Controller
 
                             $this->image_lib->clear();
 
-                            $filename = $uploadData['file_name'];
+                            $filename = $uploadData['raw_name'] . '_thumb' . $uploadData['file_ext'];
+                            $raw['raw'][] = $uploadData['file_name'];
                             $upload['totalFiles'][] = $filename;
+                            // var_dump($raw['raw']);
+                            // die;
                         } else {
                             // 🔥 HAPUS semua file yang sudah berhasil diupload sebelumnya
                             foreach ($upload['totalFiles'] as $file) {
                                 if (file_exists('./assets/img/foto_kegiatan/foto/' . $file)) {
                                     unlink('./assets/img/foto_kegiatan/foto/' . $file);
-                                }
-                                if (file_exists('./assets/img/foto_kegiatan/thumb/' . $file)) {
-                                    unlink('./assets/img/foto_kegiatan/thumb/' . $file);
                                 }
                             }
                             flashData('File yang diupload ada yang belum sesuai!', 'Gagal Upload File', 'error');
@@ -92,9 +93,6 @@ class Lapor extends CI_Controller
                         foreach ($upload['totalFiles'] as $file) {
                             if (file_exists('./assets/img/foto_kegiatan/foto/' . $file)) {
                                 unlink('./assets/img/foto_kegiatan/foto/' . $file);
-                            }
-                            if (file_exists('./assets/img/foto_kegiatan/thumb/' . $file)) {
-                                unlink('./assets/img/foto_kegiatan/thumb/' . $file);
                             }
                         }
                         flashData('File yang diupload ada yang belum sesuai!', 'Gagal Upload File', 'error');
@@ -124,10 +122,12 @@ class Lapor extends CI_Controller
             ];
 
             $this->Model_lapor->addLaporan($data);
-
-            for ($i=0; $i < count($upload['totalFiles']); $i++) { 
-                unlink(FCPATH . 'assets/img/foto_kegiatan/foto/' . $upload['totalFiles'][$i]);
+            foreach ($raw['raw'] as $raw) {
+                if (file_exists('./assets/img/foto_kegiatan/foto/' . $raw)) {
+                    unlink('./assets/img/foto_kegiatan/foto/' . $raw);
+                }
             }
+
             flashData('Berhasil menambahkan laporan!', 'Tambah Laporan', 'success');
             redirect('lapor/laporan', 'refresh');
         }
@@ -167,7 +167,7 @@ class Lapor extends CI_Controller
         }
         $laporan = $this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->row_array();
         for ($i = 1; $i <= 4; $i++) {
-            unlink(FCPATH . 'assets/img/foto_kegiatan/thumb/' . $laporan['foto' . $i]);
+            unlink(FCPATH . 'assets/img/foto_kegiatan/foto/' . $laporan['foto' . $i]);
         }
         // die;
 

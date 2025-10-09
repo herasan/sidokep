@@ -213,7 +213,7 @@ class Admin extends CI_Controller
             $this->load->model('Model_admin');
             $laporan = $this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->row_array();
             for ($i = 1; $i <= 4; $i++) {
-                unlink(FCPATH . 'assets/img/foto_kegiatan/thumb/' . $laporan['foto' . $i]);
+                unlink(FCPATH . 'assets/img/foto_kegiatan/foto/' . $laporan['foto' . $i]);
             }
             $this->db->where('id_dokumentasi', $id);
             $this->db->delete('dokumentasi_kegiatan');

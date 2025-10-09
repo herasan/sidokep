@@ -49,10 +49,10 @@
                 <div class="card p-4">
                     <h5 class="section-title mb-3">Foto Kegiatan</h5>
                     <div class="foto-kegiatan">
-                        <img src="<?= base_url('assets/img/foto_kegiatan/thumb/' . $laporan['foto1']) ?>" class="img-thumbnail" alt="Foto 1" class="img-fluid">
-                        <img src="<?= base_url('assets/img/foto_kegiatan/thumb/' . $laporan['foto2']) ?>" class="img-thumbnail mt-2" alt="Foto 2" class="img-fluid">
-                        <img src="<?= base_url('assets/img/foto_kegiatan/thumb/' . $laporan['foto3']) ?>" class="img-thumbnail mt-2" alt="Foto 3" class="img-fluid">
-                        <img src="<?= base_url('assets/img/foto_kegiatan/thumb/' . $laporan['foto4']) ?>" class="img-thumbnail mt-2" alt="Foto 4" class="img-fluid">
+                        <img src="<?= base_url('assets/img/foto_kegiatan/foto/' . $laporan['foto1']) ?>" class="img-thumbnail" alt="Foto 1" class="img-fluid">
+                        <img src="<?= base_url('assets/img/foto_kegiatan/foto/' . $laporan['foto2']) ?>" class="img-thumbnail mt-2" alt="Foto 2" class="img-fluid">
+                        <img src="<?= base_url('assets/img/foto_kegiatan/foto/' . $laporan['foto3']) ?>" class="img-thumbnail mt-2" alt="Foto 3" class="img-fluid">
+                        <img src="<?= base_url('assets/img/foto_kegiatan/foto/' . $laporan['foto4']) ?>" class="img-thumbnail mt-2" alt="Foto 4" class="img-fluid">
                     </div>
                 </div>
             </div>
