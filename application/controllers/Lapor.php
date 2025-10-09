@@ -36,7 +36,7 @@ class Lapor extends CI_Controller
             $upload = [];
             if (isset($_FILES['fotos'])) {
                 $count = count($_FILES['fotos']['name']);
-
+                
                 for ($i = 0; $i < $count; $i++) {
                     if (!empty($_FILES['fotos']['name'][$i])) {
                         $_FILES['foto']['name'] = $_FILES['fotos']['name'][$i];
@@ -58,6 +58,7 @@ class Lapor extends CI_Controller
                             $configer['image_library'] = 'gd2';
                             $configer['source_image'] = $uploadData['full_path'];
                             $configer['new_image'] = './assets/img/foto_kegiatan/thumb/';
+                            $configer['create_thumb'] = TRUE;
                             $configer['maintain_ratio'] = TRUE;
                             $configer['width']         = 600; //pixel
                             $configer['master_dim'] = 'width'; // This ensures the width is maintained, and height is auto
@@ -163,11 +164,12 @@ class Lapor extends CI_Controller
         if ($this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->num_rows() < 1) {
             return redirect('auth/error', 'refresh');
         }
-        
         $laporan = $this->db->get_where('dokumentasi_kegiatan', ['id_dokumentasi' => $id])->row_array();
         for ($i = 1; $i <= 4; $i++) {
             unlink(FCPATH . 'assets/img/foto_kegiatan/thumb/' . $laporan['foto' . $i]);
         }
+        // die;
+
         $this->db->where('id_dokumentasi', $id);
         $this->db->delete('dokumentasi_kegiatan');
         flashData('Berhasil menghapus laporan!', 'Hapus Laporan', 'success');
