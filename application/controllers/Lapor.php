@@ -85,6 +85,11 @@ class Lapor extends CI_Controller
                                     unlink('./assets/img/foto_kegiatan/foto/' . $file);
                                 }
                             }
+                            foreach ($raw['raw'] as $raw) {
+                                if (file_exists('./assets/img/foto_kegiatan/foto/' . $raw)) {
+                                    unlink('./assets/img/foto_kegiatan/foto/' . $raw);
+                                }
+                            }
                             flashData('File yang diupload ada yang belum sesuai!', 'Gagal Upload File', 'error');
                             redirect('lapor', 'refresh');
                         }
@@ -93,6 +98,11 @@ class Lapor extends CI_Controller
                         foreach ($upload['totalFiles'] as $file) {
                             if (file_exists('./assets/img/foto_kegiatan/foto/' . $file)) {
                                 unlink('./assets/img/foto_kegiatan/foto/' . $file);
+                            }
+                        }
+                        foreach ($raw['raw'] as $raw) {
+                            if (file_exists('./assets/img/foto_kegiatan/foto/' . $raw)) {
+                                unlink('./assets/img/foto_kegiatan/foto/' . $raw);
                             }
                         }
                         flashData('File yang diupload ada yang belum sesuai!', 'Gagal Upload File', 'error');
