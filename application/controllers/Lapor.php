@@ -74,8 +74,6 @@ class Lapor extends CI_Controller
 
                             $filename = $uploadData['file_name'];
                             $upload['totalFiles'][] = $filename;
-
-                            unlink(FCPATH . 'assets/img/foto_kegiatan/foto/' . $uploadData['file_name']);
                         } else {
                             // 🔥 HAPUS semua file yang sudah berhasil diupload sebelumnya
                             foreach ($upload['totalFiles'] as $file) {
@@ -127,6 +125,9 @@ class Lapor extends CI_Controller
 
             $this->Model_lapor->addLaporan($data);
 
+            for ($i=0; $i < count($upload['totalFiles']); $i++) { 
+                unlink(FCPATH . 'assets/img/foto_kegiatan/foto/' . $upload['totalFiles'][$i]);
+            }
             flashData('Berhasil menambahkan laporan!', 'Tambah Laporan', 'success');
             redirect('lapor/laporan', 'refresh');
         }

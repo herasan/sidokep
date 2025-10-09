@@ -28,9 +28,9 @@
                                 <option value="Klaster 3 (Usia Dewasa dan Lansia)">Klaster 3 (Usia Dewasa dan Lansia)</option>
                                 <option value="Klaster 4 (Penyakit Menular)">Klaster 4 (Penyakit Menular)</option>
                                 <option value="Klaster 5 (Lintas Klaster)">Klaster 5 (Lintas Klaster)</option>
+                                <option value="Lainnya">Lainnya</option>
                             </select>
                         </div>
-
 
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="<?= base_url('admin/kegiatan'); ?>" class="btn btn-secondary">Batal</a>
