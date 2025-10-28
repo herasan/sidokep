@@ -44,6 +44,8 @@ class Admin extends CI_Controller
             }
             $this->load->model('Model_admin');
             if ($this->input->post()) {
+                $old_acc = $this->db->get_where('users', ['id_user' => $id])->row_array();
+                
                 $this->form_validation->set_rules('nama', 'Nama Pegawai', 'required');
                 $this->form_validation->set_rules('status', 'Status Pegawai', 'required');
                 if ($this->input->post('status') == 'ASN') {
@@ -51,7 +53,11 @@ class Admin extends CI_Controller
                 } else {
                     $this->form_validation->set_rules('nip', 'NIP', 'is_unique[users.nip]|numeric');
                 }
-                $this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]');
+                if ($old_acc['username'] == $this->input->post('username')) {
+                    $this->form_validation->set_rules('username', 'Username', 'required|trim|min_length[5]');
+                } else {
+                    $this->form_validation->set_rules('username', 'Username', 'required|trim|min_length[5]|is_unique[users.username]');
+                }
                 $this->form_validation->set_rules('password', 'Password', 'min_length[6]');
                 $this->form_validation->set_rules('confirm_password', 'Ulangi Password', 'matches[password]');
                 $this->form_validation->set_rules('jabatan', 'Jabatan', 'required');

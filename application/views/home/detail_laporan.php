@@ -34,7 +34,7 @@
 
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Tanggal Kegiatan</label>
-                        <input type="text" class="form-control" value="<?= $laporan['tanggal_kegiatan'] ?>" readonly>
+                        <input type="text" class="form-control" value="<?= date("d F Y", strtotime($laporan['tanggal_kegiatan'])) ?>" readonly>
                     </div>
 
                     <div class="mb-3">

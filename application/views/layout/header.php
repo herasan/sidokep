@@ -6,7 +6,7 @@
                 href="<?= base_url('home') ?>"
                 class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                 <img src="<?= base_url('assets/img/home/logo_puskesmas.png') ?>" style="width: 40px;" alt="" srcset="">
-                <h5 class="mb-1" style="margin-right: 25px; margin-left: 8px;">Puskeskmas Kebumen 1</h5>
+                <h5 class="mb-1" style="margin-right: 25px; margin-left: 8px;">Puskesmas Kebumen 1</h5>
             </a>
             <ul
                 class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">

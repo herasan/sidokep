@@ -51,7 +51,7 @@
                         Mudahkan proses kerja Anda dengan sistem modern, cepat, dan transparan.
                     </p>
                     <div class="d-flex gap-3">
-                        <a href="#tentang" class="btn btn-outline-light btn-lg px-4">ℹ️ Pelajari</a>
+                        <a href="<?= base_url('home/tutorial') ?>" class="btn btn-outline-light btn-lg px-4">ℹ️ Pelajari</a>
                     </div>
                 </div>
 
@@ -114,13 +114,11 @@
                 <!-- Fitur 1 -->
                 <div class="col-md-4">
                     <div class="card shadow-sm p-3 h-100 border-0">
-                        <h3 class="card-title">Upload Foto</h3>
+                        <h3 class="card-title">Pelaporan Praktis</h3>
                         <img src="<?= base_url('assets/img/home/upload_foto.png') ?>"
                             class="my-5 mx-auto" alt="Upload Foto" style="width:180px; height:180px;">
                         <p class="card-text text-muted">
-                            Pegawai dapat mendokumentasikan kegiatan dengan mudah.
-                            Setiap foto bisa diunggah langsung melalui aplikasi.
-                            Prosesnya cepat dan praktis tanpa perlu cara rumit.
+                            Pegawai dapat mendokumentasikan kegiatan dengan mudah dan efisien. Laporan menjadi lebih lengkap dan tertata, sehingga proses pelaporan dapat dilakukan lebih cepat, praktis, dan terintegrasi tanpa perlu langkah yang rumit.
                         </p>
                     </div>
                 </div>
@@ -132,9 +130,7 @@
                         <img src="<?= base_url('assets/img/home/manajemen_data.png') ?>"
                             class="my-5 mx-auto" alt="Manajemen Data" style="width:180px; height:180px;">
                         <p class="card-text text-muted">
-                            Semua foto tersimpan rapi dengan nama dan tanggal kegiatan.
-                            Data mudah dicari kembali kapan saja dibutuhkan.
-                            Aplikasi membantu menghindari tumpang tindih dokumentasi.
+                            Semua kegiatan tersimpan rapi berdasarkan nama dan tanggal, sehingga mudah direkap dan dicari kembali kapan saja. Dengan sistem ini, pegawai dapat mengelola data laporan secara efisien, serta memastikan setiap dokumentasi tercatat dengan jelas dan terstruktur.
                         </p>
                     </div>
                 </div>
@@ -142,13 +138,11 @@
                 <!-- Fitur 3 -->
                 <div class="col-md-4">
                     <div class="card shadow-sm p-3 h-100 border-0">
-                        <h3 class="card-title">Laporan Cepat</h3>
+                        <h3 class="card-title">Data Lebih Aman</h3>
                         <img src="<?= base_url('assets/img/home/laporan.png') ?>"
                             class="my-5 mx-auto" alt="Laporan Cepat" style="width:180px; height:180px;">
-                        <p class="card-text text-muted">
-                            Foto yang terkumpul bisa langsung digunakan untuk laporan.
-                            Proses rekap data foto kegiatan lebih mudah.
-                            Hal ini mempercepat penyusunan pertanggungjawaban kegiatan.
+                        <p class="card-text text-justify text-muted">
+                            Semua data tersimpan dengan aman dan rapi dalam sistem, sehingga meminimalkan risiko kehilangan atau kesalahan pencatatan. Dengan penyimpanan yang terpusat, data laporan lebih mudah diakses dan dikelola, serta dapat digunakan kembali kapan pun dibutuhkan.
                         </p>
                     </div>
                 </div>

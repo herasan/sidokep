@@ -17,7 +17,7 @@
             <a href="#" class="nav-link px-2 text-body-secondary">About</a>
           </li>
         </ul> -->
-    <p class="text-center text-body-secondary">&copy; 2025 Company, Inc</p>
+    <p class="text-center text-body-secondary">Copyright &copy; Puskesmas Kebumen 1 2025</p>
   </footer>
 </div>
 <script

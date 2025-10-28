@@ -13,6 +13,11 @@ class Home extends CI_Controller {
         $this->load->view('layout/wrapper', $data);
     }
 
+    function tutorial() {
+        $data['content'] = 'home/tutorial';
+        $this->load->view('layout/wrapper', $data);
+    }
+
 }
 
 /* End of file: Home.php */
