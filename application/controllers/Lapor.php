@@ -49,7 +49,7 @@ class Lapor extends CI_Controller
                         $config['upload_path'] = './assets/img/foto_kegiatan/foto/';
                         $config['allowed_types'] = 'jpg|png|jpeg';
                         $config['max_size'] = 10000;
-                        $config['file_name'] = $_FILES['fotos']['name'][$i];
+                        $config['encrypt_name'] = TRUE;
                         $this->load->library('upload', $config);
                         $this->upload->initialize($config);
 
